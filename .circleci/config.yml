@@ -1,9 +1,29 @@
 version: 2.1
-orbs:
-  gcp-cli: circleci/gcp-cli@2.1.0
+jobs:
+  deploy:
+    docker:
+      - image: google/cloud-sdk
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run:
+          name: Copy across app.yaml config
+          command: ./app.yaml.sh > ./app.yaml
+      - run:
+          name: Set up gcloud config
+          command: |
+            echo $GCLOUD_KEY | base64 --decode | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${GCLOUD_PROJECT}
+      - deploy:
+          name: Deploying to App Engine
+          command: gcloud app deploy app.yaml --version 1
 workflows:
-  install_and_configure_cli:
+  deploy:
     jobs:
-      - gcp-cli/install_and_initialize_cli:
-          context: myContext
-          executor: gcp-cli/default
+      - deploy:
+          name: deploy-backend
+          filters:
+            branches:
+              only: master
