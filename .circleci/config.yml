@@ -22,7 +22,4 @@ workflows:
   version: 2
   deploy_backend:
     jobs:
-      - deploy:
-          filters:
-            branches:
-              only: master
+      - deploy
