@@ -19,6 +19,7 @@ jobs:
       - deploy:
           name: Deploying to App Engine
           command: gcloud app deploy app.yaml --version 1
+
 workflows:
   deploy:
     jobs:
