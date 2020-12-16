@@ -21,7 +21,8 @@ jobs:
           command: gcloud app deploy app.yaml --version 1
 
 workflows:
-  deploy-backend:
+  version: 2
+  deploy_backend:
     jobs:
       - deploy:
           filters:
