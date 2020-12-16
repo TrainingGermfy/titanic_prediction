@@ -24,7 +24,7 @@ workflows:
   deploy:
     jobs:
       - deploy:
-          name: deploy-backend
+          name: deploy
           filters:
             branches:
               only: master
