@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  deploy-backend:
+  deploy:
     docker:
       - image: google/cloud-sdk
 
@@ -22,7 +22,7 @@ jobs:
 workflows:
   deploy:
     jobs:
-      - deploy-backend:
+      - deploy:
           name: deploy-backend
           filters:
             branches:
