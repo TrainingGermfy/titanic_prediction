@@ -6,6 +6,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - run: chmod +x ./app.yaml.sh
       - run:
           name: Copy across app.yaml config
           command: ./app.yaml.sh > ./app.yaml
