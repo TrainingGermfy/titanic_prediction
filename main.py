@@ -38,10 +38,10 @@ def home():
                  form_cabin_class[0], form_cabin_class[1], form_cabin_class[2], form_cabin_class[3], form_cabin_class[4],
                  form_cabin_class[5], form_cabin_class[6], form_cabin_class[7], form_embarked[0], form_embarked[1],
                  form_embarked[2]]]
-    print(pasajero)
+    #print(pasajero)
     y_prob = logreg.predict(pasajero)[0] == 1
     resultado = {'sobrevive': str(y_prob)}
-    print(resultado)
+    #print(resultado)
     return jsonify(resultado)
 
 if __name__ == '__main__':
