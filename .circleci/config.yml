@@ -22,7 +22,7 @@ jobs:
 workflows:
   deploy:
     jobs:
-      - deploy:
+      - deploy-backend:
           name: deploy-backend
           filters:
             branches:
